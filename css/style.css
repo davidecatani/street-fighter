@@ -1,0 +1,132 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 392px;
+    height: 248px;
+    margin: 160px auto 0;
+    position: relative;
+    transform: scale(2);
+}
+#game {
+    display: block;
+    /* width: 384px;
+    height: 224px; */
+    width: 392px;
+    height: 248px;
+    position: relative;
+    background: #aaa;
+}
+.stage {
+    display: block;
+    background-color: aqua;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+.stage .ground {
+    position: absolute;
+    bottom: -11px;
+    width: 896px;
+    height: 72px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-repeat: no-repeat;
+    transition: 0.2s ease-in-out;
+    transform: translate(-50%, 0) scale(0.7);
+}
+.stage.ken .ground {
+    background-image: url(/img/stages/ken.png);
+    background-position: -8px -392px;
+}
+.stage .background {
+    position: absolute;
+    top: -2px;
+    width: 768px;
+    height: 176px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-repeat: no-repeat;
+    transition: 0.2s ease-in-out;
+}
+.stage.ken .background {
+    background-image: url(/img/stages/ken.png);
+    background-position: -72px -208px;
+}
+.character {
+    display: block;
+    width: 70px;
+    height: 100px;
+    z-index: 10;
+    position: absolute;
+    left: 50px;
+    bottom: 25px;
+}
+@keyframes ryuStanding {
+    from {
+        background-position-x: 0px;
+    }
+    to {
+        background-position-x: -350px;
+    }
+}
+.character.ryu {
+    background-image: url(/img/characters/ryu.png);
+    background-repeat: no-repeat;
+    background-position-y: 0px;
+    animation-name: ryuStanding;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: steps(5);
+}
+
+@keyframes ruyForward {
+    from {
+        background-position-x: 0px;
+    }
+    to {
+        background-position-x: -350px;
+    }
+}
+
+.character.ryu.forward {
+    background-position-y: -100px;
+    animation-name: ruyForward;
+}
+
+@keyframes ruyBackward {
+    from {
+        background-position-x: -350px;
+    }
+    to {
+        background-position-x: -840px;
+    }
+}
+
+.character.ryu.backward {
+    background-position-y: -100px;
+    animation-name: ruyForward;
+    animation-timing-function: steps(5);
+}
+
+@keyframes ruyCrouching {
+    from {
+        background-position-x: -560px;
+    }
+    to {
+        background-position-x: -700px;
+    }
+}
+
+.character.ryu.down {
+    animation-duration: .1s;
+    background-position-y: 0;
+    animation-fill-mode: forwards;
+    animation-name: ruyCrouching;
+    animation-timing-function: steps(2);
+    animation-iteration-count: unset;
+}
